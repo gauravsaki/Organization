@@ -32,6 +32,7 @@
         <module>FrontLBINGINX</module>
         <module>ZuulAPIGateWay1</module>
         <module>UserProfile</module>
+        <module>RedisUserSessionManager</module>
     </modules>
     <dependencies>
         <dependency>
