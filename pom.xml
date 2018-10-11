@@ -33,6 +33,7 @@
         <module>ZuulAPIGateWay1</module>
         <module>UserProfile</module>
         <module>RedisUserSessionManager</module>
+        <module>ConfigServer</module>
     </modules>
     <dependencies>
         <dependency>

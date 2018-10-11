@@ -1,6 +1,9 @@
 package com.orgnization.sw.redis.user.session.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,17 +43,20 @@ public class SessionController {
     @RequestMapping(value = "/addSession", method = RequestMethod.POST)
     public ResponseEntity<String> add(
         @RequestBody UserSession session ) {
-
-        session.setTokenGeneratedDateTime(Calendar.getInstance().toString());
-        
+        Calendar cal = Calendar.getInstance();
+        Date date=cal.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("dd:mm:yyyy HH:mm:ss");
+        String formattedDate=dateFormat.format(date);
+        session.setTokenGeneratedDateTime(formattedDate);
         redisRepository.add(session);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getSession", method = RequestMethod.POST)
-    public ResponseEntity<String> getSession(@RequestParam String token) {
-        redisRepository.findSession(token);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public String  getSession(@RequestParam String token) {
+        String session =redisRepository.findSession(token);
+        System.out.println("session :"+session);
+        return session;
     }
 
     @RequestMapping(value = "/deleteSession", method = RequestMethod.POST)

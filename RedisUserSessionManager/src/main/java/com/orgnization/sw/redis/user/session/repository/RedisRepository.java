@@ -25,6 +25,6 @@ public interface RedisRepository {
     /**
      * find a movie
      */
-    UserSession findSession(String id);
+    String findSession(String id);
     
 }

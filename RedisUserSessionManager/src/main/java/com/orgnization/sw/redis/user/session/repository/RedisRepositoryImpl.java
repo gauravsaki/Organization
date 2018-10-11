@@ -39,8 +39,8 @@ public class RedisRepositoryImpl implements RedisRepository {
         hashOperations.delete(KEY, id);
     }
     
-    public UserSession findSession(final String id){
-        return (UserSession) hashOperations.get(KEY, id);
+    public String findSession(final String id){
+        return  (String)hashOperations.get(KEY, id);
     }
     
     public Map<Object, Object> findAllSessions(){

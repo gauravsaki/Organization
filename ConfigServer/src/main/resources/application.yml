@@ -1,0 +1,19 @@
+server:
+    port: 9009
+spring:
+    application:
+        name: configserver
+    cloud:
+        config:
+           server:
+                git:
+                   uri: file://home/gaurav/CentralRepo/
+eureka:
+   client:
+      serviceUrl:
+         defaultZone: http://peer1:9000/eureka/
+      registerWithEureka: true
+      fetchRegistry: true
+   instance:
+      preferIpAddress: false
+      hostname: localhost
